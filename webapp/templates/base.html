@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Machine Learning</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+    <script src="{{ url_for('static', filename='htmx.min.js') }}"></script>
+</head>
+<body>
+    <div class="header">
+        <h1>Machine Learning</h1>
+    </div>
+    <div class="container">
+        <div class="navbar">
+            <a href="/">Spam Detector</a>
+            <a href="songs">Song Recommendations</a>
+        </div>
+        {% block content %}{% endblock %}
+    </div>
+</body>
+</html>

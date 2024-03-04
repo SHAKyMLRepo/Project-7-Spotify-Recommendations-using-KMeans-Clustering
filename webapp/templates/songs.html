@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="banner">
+        Song Recommender 5000
+    </div>
+    <p>To get Recommendations, select an artist, album and song to view song recommendations.</p>
+    <div class = 'selectOps'>
+        <label for="artist">Please select an artist session:</label>
+            <select name="artist" id="artist" hx-trigger="load, change" hx-post="/artists" hx-target="#album">
+                {% for name in song_data %}
+                <option value="{{ name }}" {% if loop.index == 1 %}selected{% endif %}>
+                    {{ name[:50] }}{% if name|length > 50 %}...{% endif %}
+                </option>
+            {% endfor %}
+            </select><br><br>
+            <label for = "album">Please select an album: </label>
+            <select name="album" id="album" hx-trigger="change" hx-post="/album" hx-target="#song">
+            </select><br><br>
+            <label for = "song">Please select a song: </label>
+            <select name="song" id="song" hx-trigger="change" hx-post="/song" hx-target="#songs">
+            </select><br><br>
+    </div>
+    <div id="songs">
+    </div>
+{% endblock %}

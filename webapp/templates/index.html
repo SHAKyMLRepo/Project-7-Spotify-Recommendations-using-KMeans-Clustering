@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="banner">
+        Spam Detector 5000
+    </div>
+    <form method="POST">
+        <textarea class="textarea" name="text" placeholder="Enter text here" required></textarea>
+        <br>
+        <button class="button" type="submit">Predict Spam</button>
+        <br>
+        <input class='result' type="text" name="prediction" value="{{ prediction }}" readonly>
+    </form>
+{% endblock %}
