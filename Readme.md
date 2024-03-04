@@ -107,17 +107,17 @@ for k in clusters_range:
 The following visualisation was created to view inertia's rate of decrease.
 ![Elbow method graph](Images/inertia.png)
 
-#### Model Evaluation
+##### Model Evaluation
 The results from Model 2 show the difference emphasis that the Inertia and Silhouette metrics focus on. While the Inertia value is greatly improved from 57483 to 24168 indicating that the clusters are much more cohesive and well defined in Model 2, the Silhouette score decreased from 0.25 to 0.14 indicating that clusters overlap more in Model 2. This result shows the importance of considering more than just the inertia value when developing K Means models depending on project requirements as optimising for Inertia does not take into account cluster overlap.
 
-### Model 3
+#### Model 3
 In this model we will attempt to use silhouette score to determine optimal k. The values were picked from viewing graph and looking for other possible inertia decrease points.  Credit to this website for code: https://builtin.com/data-science/elbow-method. The resulting visualisations for a number of possible k values.
 
 ![Silhouette plots](Images/silh.png)
 
-Analysing these results we see that the maximum Silhouette values are at lower n values. However, to maximise both inertia and silhouette, the n value of 33 seems like a good balance as it has maximum inertia and silhouette value of 0.15 is close to other possible values for example, n=18 at 0.16. So for Model 3, n will be 33.
+Analysing these results we see that the maximum Silhouette values are at lower n values. However, to maximise both inertia and silhouette, the n value of 33 seems like a good balance as it has maximum inertia and silhouette value of 0.15 is close to other possible values for example, n=18 at 0.16. So for Model 3, n will be 33. This will be the model taken to deployment as it achieves the best balance between inertia and silhouette scores.
 
-## Utilising Model
+### Utilising Model
 To implement the recommendation system from this model, we will add a cluster column to the original dataframe. The recommendation system will take a song name, album name and artist name as inputs and then return the 10 songs closest to the centroid for that songs cluster. Credit to https://copyprogramming.com/howto/get-nearest-point-to-centroid-scikit-learn?utm_content=cmp-true for the code to find the closest songs to centroid.
 
 ```
@@ -152,7 +152,7 @@ def recommender(df, artist_name, album_name, track_name, kmeans, X_scaled_df):
     
     return closest_track_ids   
 ```
-## Saving Model for Deployment
+### Saving Model for Deployment
 To use this function at a later date the model and two dataframes are saved using pickle and pandas for later use with the following code.
 
 ```
@@ -162,6 +162,9 @@ with open('Model/kmeans_model.pkl', 'wb') as f:
 df.to_csv('Model/df.csv', index=False)
 X_scaled_df.to_csv('Model/X_scaled_df.csv', index=False)
 ```
+
+### Deployment
+This file was then used to build an online webapp using the model to generate song recommendations based on a users input artist, album and song. The code for this webapp is included in the repository if you wish to find the implementation details. If you want to just test out the webapp itself, you can find the resulting deployed application at the following website (http://roadlesswalked.pythonanywhere.com/songs), please feel free to try it out. 
 
 ### Learning Outcomes
 The completion of this project illustrated a number learning points for machine learning tasks and unsupervised learning in particular:
