@@ -24,18 +24,18 @@ If you wish to experiment with the code, you can find the notebook on Google Col
 
 ![Frequency Distributions](Images/graph1.png)
 
-Using this visualisation we can attempt to any skews in data or explore the feature value distributions. From the charts we can see that:
+Using this visualisation we can attempt to identify any skews in data or explore the feature value distributions. From the charts we can see that:
 1. Features have very different scales so will need normalisation.
 2. Time Signature is highly skewed with most songs in the 4 category, dropping this column may be necessary.
 3. Mode is binary, either 0 or 1, with a skew towards 1.
 4. Instrumentalness has mostly very low values, normalisation should fix any imbalance this may cause.
 5. Many columns such dancebility and loudness have a normal distribution.
-These subplots provide a valuable visual insight into any imbalances in the dataset in terms of variable value distributions. Looking at this chart we can see where the dataset may introdcause issues when trained with this data.
+These subplots provide a valuable visual insight into any imbalances in the dataset in terms of variable value distributions. Looking at this chart we can see where the dataset may introduce issues when trained with this data, this will be accounted for when building and finetuning models.
 
 ### Data Preprocessing
 
 #### Cleaning dataset
-The reference notebook uses a dataset which is already cleaned. This project's dataset needed to be checked for null or duplicate values which was performed with the following code:
+The reference notebook uses a dataset which is already cleaned. This project's dataset cleaning including checking for null or duplicate values which was performed with the following code:
 
 ```
 #Dropping null values
@@ -78,7 +78,7 @@ kmeans.fit(X_scale)
 The k value is a hyperparameter which controls the number of clusters which the K Means model tries to generate centroids for. 
 
 #### Model Evaluation 
-Model evaluation in unsupervised learning is more complicated as we do not have labels which we can use to evaluate model performance. To assess how the model performed two metrics were used.
+Model evaluation in unsupervised learning proves to introduce more complications in terms of evaluation as we do not have labels which we can use to judge model performance. To assess how the model performed two metrics were used.
 1. **Inertia**: Inertia is the sum of squares distances of samples to their cluster centroid. Higher values indicate clusters are more spread out and less well defined.
 2. **Silhouette**: Silhouette score is another metric which can be used to measure K Means performance. This metric not only considered the distances of samples to their own cluster centroid but also the average distance of samples to all samples in their nearest neighbouring cluster. Higher silhouette scores indicate that clusters are well seperated from other clusters and have high cohesion. Silhouette score is between 1 and -1 with higher values indicating better performance.
 
