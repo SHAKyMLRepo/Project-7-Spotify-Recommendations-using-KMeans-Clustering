@@ -2,6 +2,10 @@
 
 ## Changes
 
+### Collab Notebook
+If you wish to experiment with the code, you can find the notebook on Google Collab at the link below.<br> 
+[Collab Notebook - Spotify Recommendations](https://colab.research.google.com/drive/1LK2YCIj0SzYWSZvoJTTqDEWu8G5eIaBQ?usp=drive_link)
+<br>
 ### Project Goals
  This project was inspired and guided by a Jupyter notebook explaining the K Means Clustering algorithm. This notebooks can be found [here](https://github.com/jakevdp/PythonDataScienceHandbook/blob/master/notebooks/05.11-K-Means.ipynb) for reference.
   The notebook gives an overview of the K Means algorithm and supplies some examples of its use in unsupervised learning tasks such as identifying digits with no labels and also color compression. The goal of this project is to use K Means algorithm to cluster Spotify songs in an attempt to find patterns that can be used to create song recommendations for users.
